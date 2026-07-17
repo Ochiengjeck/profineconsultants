@@ -29,7 +29,6 @@ export const metadata: Metadata = {
   },
   description:
     "Profine Consultants is an audit, tax, accounting and consulting firm based in Juba, South Sudan. More than just numbers — we create value for our clients.",
-  icons: { icon: "/profine-icon.png" },
   openGraph: {
     title: `${firm.name} — Audit · Tax · Consulting`,
     description:

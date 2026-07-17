@@ -235,6 +235,6 @@ Contact form: Name / Email / Message / Send
 
 ## Recovered assets
 - `public/profine-logo.png` — original logo (from archive capture `20250318024644`).
-- `public/profine-icon.png` — square icon crop (favicon source).
+- `app/icon.svg` — branded monogram favicon (navy tile, white "P", orange accent bar).
 - Original hero stock photos exist in the archive but the new site uses a fresh graphic/typographic
   design instead; photo slots can be added later under `public/images/`.

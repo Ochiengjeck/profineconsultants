@@ -17,12 +17,12 @@ export default function Home() {
   return (
     <>
       {/* ---------------- Hero ---------------- */}
-      <section className="relative overflow-hidden bg-navy-deep text-white">
+      <section className="relative flex min-h-[calc(100dvh-5rem)] items-center overflow-hidden bg-navy-deep text-white">
         <div className="ledger-grid absolute inset-0 opacity-70" aria-hidden />
         <div className="absolute -left-32 top-10 h-96 w-96 rounded-full bg-navy/60 blur-3xl" aria-hidden />
         <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-orange/15 blur-3xl" aria-hidden />
 
-        <div className="relative mx-auto max-w-6xl px-5 pb-20 pt-20 sm:px-8 sm:pb-28 sm:pt-28">
+        <div className="relative mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
           <p className="eyebrow data-label reveal">{firm.descriptor} — {firm.city}</p>
 
           <h1 className="font-display reveal mt-6 max-w-4xl text-5xl font-bold leading-[0.98] tracking-tight sm:text-7xl">
@@ -31,12 +31,12 @@ export default function Home() {
             Just <span className="text-orange">Numbers.</span>
           </h1>
 
-          <p className="reveal mt-7 max-w-xl text-lg leading-relaxed text-white/70">
+          <p className="reveal mt-6 max-w-xl text-lg leading-relaxed text-white/70">
             An audit, tax, accounting and consulting firm in the heart of Juba, South Sudan. We bring
             expert knowledge to your environment so you can move forward with confidence.
           </p>
 
-          <div className="reveal mt-9 flex flex-wrap gap-3">
+          <div className="reveal mt-8 flex flex-wrap gap-3">
             <Link
               href="/contact-us"
               className="rounded-full bg-orange px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
@@ -52,9 +52,9 @@ export default function Home() {
           </div>
 
           {/* Discipline strip */}
-          <div className="reveal mt-16 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+          <div className="reveal mt-12 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:mt-14 sm:grid-cols-4">
             {["Audit", "Tax", "Risk", "Advisory"].map((d) => (
-              <div key={d} className="bg-navy-deep px-5 py-5">
+              <div key={d} className="bg-navy-deep px-5 py-4 sm:py-5">
                 <p className="font-display text-2xl font-semibold">{d}</p>
               </div>
             ))}
