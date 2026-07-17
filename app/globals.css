@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+/* ---- Brand tokens (from the ProFine logo: navy + orange) ---- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f7f7f3;
+  --paper-2: #eeeee8;
+  --ink: #141a2e;
+  --navy: #1e2a5b;
+  --navy-deep: #0f1732;
+  --navy-700: #26346b;
+  --orange: #e8722a;
+  --orange-600: #d5611b;
+  --muted: #5c6478;
+  --line: #e3e2da;
+  --line-on-dark: rgba(255, 255, 255, 0.14);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-700: var(--navy-700);
+  --color-orange: var(--orange);
+  --color-orange-600: var(--orange-600);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --font-display: var(--font-display), "Geist", system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--orange);
+  color: #fff;
+}
+
+/* Focus visibility floor */
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---- Typographic helpers ---- */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Monospaced data label — the "numbers" utility voice */
+.data-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Thin vertical ledger rule that precedes a data label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--orange);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* ---- Faint ledger grid backdrop for dark sections ---- */
+.ledger-grid {
+  background-image:
+    linear-gradient(var(--line-on-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-on-dark) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+}
+
+/* ---- Marquee (trusted-by strip) ---- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 3rem;
+  padding-right: 3rem;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+/* ---- Scroll / load reveal ---- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  .reveal { animation: none; }
+  * { transition: none !important; }
 }
